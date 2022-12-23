@@ -1,18 +1,27 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.7.0 <0.9.0;
 
-contract Employees {
+contract BookStore {
+
+  address sender;
   string fullname;
+  string discription;
+  uint price;
 
-  constructor() public {
-    fullname = "Nadher Arroum";
-  }
-  function setEmployee(string memory name) public {
-      fullname = name;
+function sellBook(string memory _fullname,string memory _discription, uint _price) public {
+          sender = msg.sender;
+          fullname = _fullname;
+          discription = _discription;
+          price = _price;
   }
 
-   function getEmployee() public view  returns(string memory ){
-    return fullname;
+function getBook() public view returns(
+  address _sender,
+  string memory _fullname,
+  string memory _discription,
+  uint _price
+){
+      return(sender, fullname, discription, price);
   }
 
 }
